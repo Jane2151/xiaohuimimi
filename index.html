@@ -4,12 +4,55 @@
 
 <h1>XiaoHui</h1>
 <p>Under renovation...</p>
-<p style="background-image: url('./images/20250930_215233.jpg');">
-<img src="./images/cat1.jpg"/>
-</p>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Pictures Display</title>
+<style>
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+
+<body>
+
+  <h1>My Picture Gallery</h1>
+
+  <div class="gallery">
+    <img src='./images/20250930_215233.jpg' alt="Image 1">
+    <img src="./images/cat1.jpg" alt="Image 2">
+    <img src="https://picsum.photos/id/1018/400/300" alt="Image 3">
+    <img src="https://picsum.photos/id/1020/400/300" alt="Image 4">
+    <img src="https://picsum.photos/id/1024/400/300" alt="Image 5">
+    <img src="https://picsum.photos/id/1035/400/300" alt="Image 6">
+  </div>
 
 </body>
 </html>
+
 
 
 
