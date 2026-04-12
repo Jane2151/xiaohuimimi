@@ -42,7 +42,7 @@
     .paw-part {
       position: relative;
       background-color: var(--paw-color);
-      border: 6px solid white; /* Slightly thicker border for the bigger size */
+      border: 6px solid white; 
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
@@ -90,6 +90,7 @@
     }
     
     .toe:nth-child(1) { transform: rotate(-15deg); margin-top: 100px; }
+    .toe:nth-child(1):hover { transform: rotate(-15deg) scale(1.08); }
     .toe:nth-child(1)::after { background-image: url('images/young.jpg'); }
 
     .toe:nth-child(2) { width: 110px; height: 150px; margin-top: 0px; }
@@ -99,6 +100,7 @@
     .toe:nth-child(3)::after { background-image: url('images/curiouscat.jpg'); }
 
     .toe:nth-child(4) { transform: rotate(15deg); margin-top: 100px; }
+    .toe:nth-child(4):hover { transform: rotate(15deg) scale(1.08); }
     .toe:nth-child(4)::after { background-image: url('images/cat1.jpg'); }
 
     .main-pad::after { background-image: url('images/kittycat.jpg'); }
