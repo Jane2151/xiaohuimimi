@@ -22,6 +22,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* This wrapper forces the H1, H2, and Paw into a vertical column */
     .content-wrapper {
       display: flex;
       flex-direction: column;
@@ -32,6 +33,7 @@
     h1 { margin-bottom: 0; color: #333; }
     h2 { margin-top: 5px; color: #777; font-weight: normal; margin-bottom: 30px; }
 
+    /* The Container for the whole paw */
     .paw-container {
       display: flex;
       flex-direction: column;
@@ -43,22 +45,23 @@
       background-size: cover;
       background-position: center;
       background-color: var(--paw-color);
+      border: 4px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
-    }
-
-    /* We use the custom SVG math here */
-    .main-pad {
-      width: 800px;  /* Wide enough for your coordinates */
-      height: 600px;
-      border: 4px solid white;
-      clip-path: url(#myCustomPaw);
-      margin-top: -150px; /* Adjusting position because path starts high up */
     }
 
     .paw-part:hover {
       transform: scale(1.1);
       z-index: 10;
+    }
+
+    /* Resized main pad (Slightly smaller) */
+    .main-pad {
+      width: 180px;
+      height: 150px;
+      border-radius: 50% 50% 40% 40%;
+      margin-top: 8px;
     }
 
     .toes-row {
@@ -68,12 +71,11 @@
       width: 100%;
     }
 
+    /* Resized toes (Slightly smaller) */
     .toe {
       width: 65px;
       height: 85px;
       border-radius: 50%;
-      border: 4px solid white; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .toe:nth-child(1), .toe:nth-child(4) { margin-top: 30px; }
@@ -98,14 +100,6 @@
       <div class="paw-part main-pad" style="background-image: url('kittycat.jpg');"></div>
     </div>
   </div>
-
-  <svg width="0" height="0" style="position: absolute;">
-    <defs>
-      <clipPath id="myCustomPaw" clipPathUnits="userSpaceOnUse">
-        <path d="M 600 550 Q 500 550 400 450 Q 250 550 200 550 Q 50 550 50 400 Q 100 300 150 250 Q 250 150 350 50 Q 400 0 450 50 Q 550 150 650 250 Q 700 300 750 400 Q 750 550 600 550 " />
-      </clipPath>
-    </defs>
-  </svg>
 
 </body>
 </html>
