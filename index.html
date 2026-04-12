@@ -15,50 +15,88 @@
   <h1>XiaoHui</h1>
   <h2>Under renovation...</h2>
 
-  <style>
-    body {
-      font-family: "Lucida Console", "Courier New", monospace;
-      background-color: #F2E2B1;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    h2{
-      text-align:center;
-      color: #333
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: transform 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-  </style>
+ <style>
+        :root {
+            --paw-color: #ffb7c5;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        /* The Container for the whole paw */
+        .paw-container {
+            position: relative;
+            width: 400px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Common style for all paw parts */
+        .paw-part {
+            background-size: cover;
+            background-position: center;
+            background-color: var(--paw-color);
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .paw-part:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        /* The main large pad (Bottom) */
+        .main-pad {
+            width: 220px;
+            height: 180px;
+            border-radius: 50% 50% 40% 40%;
+            margin-top: 10px;
+        }
+
+        /* The row for the four toes */
+        .toes-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Individual toes */
+        .toe {
+            width: 80px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        /* Adjusting toe heights for a natural look */
+        .toe:nth-child(1), .toe:nth-child(4) { margin-top: 40px; }
+        .toe:nth-child(2), .toe:nth-child(3) { margin-top: 0px; }
+
+    </style>
 
   <h1>My Picture Gallery</h1>
 
-  <div class="gallery">
-    <img src="images/20250930_215233.jpg" alt="Image 1">
-    <img src="images/cat1.jpg" alt="Image 2">
-    <img src="images/kittycat.jpg" alt="Image 3">
-    <img src="images/curiouscat.jpg" alt="Image 4">
-    <img src="images/goodcat1.jpg" alt="Image 5">
-    <img src="images/young.jpg" alt="Image 6">
-  </div>
+  <div class="paw-container">
+        <div class="toes-row">
+            <div class="paw-part toe" style="background-image: url('young.jpg');"></div>
+            <div class="paw-part toe" style="background-image: url('goodcat1.jpg');"></div>
+            <div class="paw-part toe" style="background-image: url('curiouscat.jpg');"></div>
+            <div class="paw-part toe" style="background-image: url('cat1.jpg');"></div>
+        </div>
+
+        <div class="paw-part main-pad" style="background-image: url('kittycat.jpg');"></div>
+    </div>
 </body>
 </html>
 
