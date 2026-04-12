@@ -22,7 +22,6 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* This wrapper forces the H1, H2, and Paw into a vertical column */
     .content-wrapper {
       display: flex;
       flex-direction: column;
@@ -33,7 +32,6 @@
     h1 { margin-bottom: 0; color: #333; }
     h2 { margin-top: 5px; color: #777; font-weight: normal; margin-bottom: 30px; }
 
-    /* The Container for the whole paw */
     .paw-container {
       display: flex;
       flex-direction: column;
@@ -41,14 +39,32 @@
       width: fit-content;  
     }
 
+    /* Base style for the pink parts */
     .paw-part {
-      background-size: cover;
-      background-position: center;
+      position: relative;
       background-color: var(--paw-color);
       border: 4px solid white;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
+      overflow: hidden; /* Clips the image to the shape */
+    }
+
+    /* This handles the image layer */
+    .paw-part::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0; /* Hidden by default */
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* Reveal image on hover */
+    .paw-part:hover::after {
+      opacity: 1;
     }
 
     .paw-part:hover {
@@ -70,17 +86,27 @@
       width: 100%;
     }
 
-    /* Resized toes (Slightly smaller) */
     .toe {
       width: 65px;
       height: 85px;
       border-radius: 50%;
     }
     
+    /* Toe positioning and individual image links */
     .toe:nth-child(1) { transform: rotate(-15deg); margin-top: 60px; }
+    .toe:nth-child(1)::after { background-image: url('images/young.jpg'); }
+
     .toe:nth-child(2) { height: 100px; margin-top: 0px; }
+    .toe:nth-child(2)::after { background-image: url('images/goodcat1.jpg'); }
+
     .toe:nth-child(3) { height: 100px; margin-top: 0px; }
+    .toe:nth-child(3)::after { background-image: url('images/curiouscat.jpg'); }
+
     .toe:nth-child(4) { transform: rotate(15deg); margin-top: 60px; }
+    .toe:nth-child(4)::after { background-image: url('images/cat1.jpg'); }
+
+    .main-pad::after { background-image: url('images/kittycat.jpg'); }
+
   </style>
 </head>
 
@@ -92,13 +118,13 @@
 
     <div class="paw-container">
       <div class="toes-row">
-        <div class="paw-part toe" style="background-image: url('young.jpg');"></div>
-        <div class="paw-part toe" style="background-image: url('goodcat1.jpg');"></div>
-        <div class="paw-part toe" style="background-image: url('curiouscat.jpg');"></div>
-        <div class="paw-part toe" style="background-image: url('cat1.jpg');"></div>
+        <div class="paw-part toe"></div>
+        <div class="paw-part toe"></div>
+        <div class="paw-part toe"></div>
+        <div class="paw-part toe"></div>
       </div>
 
-      <div class="paw-part main-pad" style="background-image: url('kittycat.jpg');"></div>
+      <div class="paw-part main-pad"></div>
     </div>
   </div>
 
