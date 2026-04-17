@@ -181,6 +181,28 @@ button{
   right: 0;
 }
 
+/* This covers the whole screen during the 'error' */
+#errorOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: red;
+  z-index: 3000; /* Higher than everything! */
+  opacity: 0.5;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  50% { transform: translate(-1px, 2px) rotate(1deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.glitch-active {
+  animation: shake 0.1s infinite;
+}
 
   </style>
 </head>
@@ -219,18 +241,36 @@ button{
 </div>
 
 <button type="button" onclick="openModal()">H</button>
+<div id="errorOverlay"></div>
 
 <script>
-setTimeout(function() {
-    document.getElementById("catModal").style.display = "block";
-}, 1500);
+// Function for a quick error
+function openModal() {
+    runErrorEffect(500); 
+}
+
+// Automatic start with a LONGER error
+window.onload = function() {
+    runErrorEffect(2000); 
+};
+
+function runErrorEffect(duration) {
+    const error = document.getElementById("errorOverlay");
+    const modal = document.getElementById("catModal");
+
+    error.style.display = "block";
+    document.body.classList.add("glitch-active");
+
+    setTimeout(function() {
+        error.style.display = "none";
+        document.body.classList.remove("glitch-active");
+        modal.style.display = "block";
+    }, duration);
+}
+
 function closeModal() {
     document.getElementById("catModal").style.display = "none";
 }
-function openModal() {
-    document.getElementById("catModal").style.display = "block";
-}
 </script>
-
 </body>
 </html>
