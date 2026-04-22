@@ -6,6 +6,12 @@
   <link rel="shortcut icon" href="images/bopi.ico" type="image/ico">
 
   <style>
+    body{
+      background-image: url('images/fishbone.png'); 
+      background-repeat: repeat; 
+      background-size: 180px; 
+      background-attachment: fixed; 
+    }
     :root {
       --paw-color: #ffb7c5;
     }
@@ -15,7 +21,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background-color: #f0f0f0;
+      background-color: #f7e9a0;
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -169,6 +175,34 @@
     #F7C85C 40px 
   );
 }
+button{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* This covers the whole screen during the 'error' */
+#errorOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: red;
+  z-index: 3000; /* Higher than everything! */
+  opacity: 0.5;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  50% { transform: translate(-1px, 2px) rotate(1deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.glitch-active {
+  animation: shake 0.1s infinite;
+}
 
   </style>
 </head>
@@ -198,22 +232,45 @@
         <b>DANGER</b>
       </h2>
     </div>
-    <h4 style="color: black; font-family: fantasy; font-size: 20px; text-align: center; line-height: 50px; margin-top: 100px;">
+    <h4 style="color: black; font-family: fantasy; font-size: 25px; text-align: center; line-height: 50px; margin-top: 20px;">
       BEWARE OF THE FAT CAT
     </h4>
-    <img src="images/bopilogo.png" alt="XiaoHui" style="width: 150px; height: auto; z-index: 2;">
+    <img src="images/bopilogo.png" alt="XiaoHui" style="width: 290px; height: auto; margin-bottom: 40px; z-index: 2;">
     <div id="warningStripe" style="position: absolute; bottom: 0;"></div>
   </div>
 </div>
 
+<button type="button" onclick="openModal()">H</button>
+<div id="errorOverlay"></div>
+
 <script>
-setTimeout(function() {
-    document.getElementById("catModal").style.display = "block";
-}, 1000);
+// Function for a quick error
+function openModal() {
+    runErrorEffect(500); 
+}
+
+// Automatic start with a LONGER error
+window.onload = function() {
+    runErrorEffect(2000); 
+};
+
+function runErrorEffect(duration) {
+    const error = document.getElementById("errorOverlay");
+    const modal = document.getElementById("catModal");
+
+    error.style.display = "block";
+    document.body.classList.add("glitch-active");
+
+    setTimeout(function() {
+        error.style.display = "none";
+        document.body.classList.remove("glitch-active");
+        modal.style.display(3) = "block";
+    }, duration);
+}
+
 function closeModal() {
     document.getElementById("catModal").style.display = "none";
 }
 </script>
-
 </body>
 </html>
